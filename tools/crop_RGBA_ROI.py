@@ -93,4 +93,4 @@ all_imgs.sort()
 
 right_up_corn_logos = ['/Disk1/Dataset/TV_logo_data/全图版本/其他6/星空卫视HD.png',
                        '/Disk1/Dataset/TV_logo_data/全图版本/其他6/星空卫视.png']
-# crop_save_logo(new_dir, all_imgs,right_up_corn_logos)
+crop_save_logo(new_dir, all_imgs,right_up_corn_logos)
