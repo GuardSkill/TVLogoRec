@@ -86,7 +86,7 @@ def fuse_image_multiple_logo(img_buffer, logos, masks, labels):
     resize_flag = np.random.randint(0, 4)
     h, w, c = ori_img.shape
     if w <= target_size:  # 确保一张图的宽大于640 （OpenImage的宽都大于）
-        ori_img = cv2.resize(ori_img, (int(target_size), int(target_size)))  # 该图只做一张训练使用的图
+        ori_img = cv2.resize(ori_img, (int(target_size), int(target_size)))
     else:
         if ori_img.shape[0] <= target_size:  # 确保一张图的高大于640 （OpenImage的高可能小于640）
             if resize_flag:  # 3/4 几率 resize
@@ -144,7 +144,6 @@ def fuse_image_multiple_logo(img_buffer, logos, masks, labels):
         log_center_h = ceil(small_h / 2) + single_h * logo_index + h_shift
         w_0, w_1, h_0, h_1 = log_center_w - ceil(small_w / 2), log_center_w + floor(small_w / 2),\
                              max(0,log_center_h - floor(small_h / 2)), min(h,log_center_h + ceil(small_h / 2))
-        # print(log_center_h,small_h / 2,h,h_0,h_1)
         # alpha 融合 fusion     1. 直接按原来的mask融合   2.随基消弱台标的alpha比列
         if alpha_pro >= 2:  # 按mask图融合‘
             mask_img = mask_img * 1  # nothing
@@ -273,8 +272,8 @@ if __name__ == '__main__':
     #                  img_path='/Disk1/Dataset/OpenImage/train_01/',
     #                  logo_path='/Disk1/Dataset/电视台台标_筛掉后/',
     #                  png_image='/Disk1/Dataset/TV_logo_data/TV_logo_Crop/')
-    generate_dataset(dataset_path='/data/TVLogoDataset/TV_logo_data/train_01_V3.5_C57/',
-                     img_path='/data/TVLogoDataset/OpenImage/train_00/',
+    generate_dataset(dataset_path='/data/TVLogoDataset/TV_logo_data/train_01_real_V3.5_C57/',
+                     img_path='/data/TVLogoDataset/OpenImage/train_01/',
                      png_image='/data/TVLogoDataset/TV_logo_data/TV_logo_Crop/')
 
 # generate_dataset(dataset_path='/Disk1/Dataset/TV_logo_data/train_00_V3/',

@@ -223,20 +223,20 @@ class LoadImages:
 
         # V3
         # img0 = img0[:640, :640, :]
-        resize_to_1920_and_crop=1==1
-        if resize_to_1920_and_crop:
-            if img0.shape[1]!=1920:
-                img0=cv2.resize(img0,(1920,floor(img0.shape[0]*1920/img0.shape[1])))
-                img0=img0[:960,:960,:]
-            else:
-                img0 = img0[:960, :960, :]
-            if img0.shape[0]<960:
-                half_pad_h = (960 - img0.shape[0]) / 2
+        resize_to_1920_and_crop = 1
+        half_pixel = 960
+        h_crop = 540
+        if resize_to_1920_and_crop == 1:
+            if img0.shape[1] != 1920:
+                img0 = cv2.resize(img0, (1920, floor(img0.shape[0] * 1920 / img0.shape[1])))
+            img0 = img0[:h_crop, :half_pixel, :]
+            if img0.shape[0] < h_crop:
+                half_pad_h = (h_crop - img0.shape[0]) / 2
                 img0 = cv2.copyMakeBorder(img0, floor(half_pad_h), ceil(half_pad_h), 0, 0, cv2.BORDER_CONSTANT)
-        else:
-            h,w,c=img0.shape
-            img0 = img0[:floor(w/2), :floor(w/2), :]
-            img0=cv2.resize(img0, (640, 640))
+        elif resize_to_1920_and_crop == 2:  # 直接四分之一裁剪
+            h, w, c = img0.shape
+            img0 = img0[:floor(w / 2), :floor(w / 2), :]
+            img0 = cv2.resize(img0, (640, 640))
             # Padded resize
         img = letterbox(img0, self.img_size, stride=self.stride, auto=self.auto)[0]
         # ,color=(0,0,0)
