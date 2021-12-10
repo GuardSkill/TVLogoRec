@@ -128,7 +128,7 @@ first use). Training times for YOLOv5s/m/l/x are 2/4/6/8 days on a single V100 (
 largest `--batch-size` your GPU allows (batch sizes shown for 16 GB devices).
 
 ```bash
-$ python train.py --data coco.yaml --cfg yolov5s.yaml --weights '' --batch-size 64
+$ python train.py --data TVlogoDynamic.yaml --cfg yolov5s.yaml --weights '' --batch-size 64
                                          yolov5m                                40
                                          yolov5l                                24
                                          yolov5x                                16

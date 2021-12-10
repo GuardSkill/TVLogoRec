@@ -4,12 +4,15 @@ import glob
 from tqdm import trange
 import numpy as np
 
+
 def print_class(all_imgs):
-    names=[]
+    names = []
     for img in all_imgs:
         names.append(os.path.basename(img).split('.')[0])
     print(names)
-#  把文件夹的png图像转换为jpg
+
+
+#  把文件夹的png图像转换为jpg,crop里面的ROI(保证台标在左上角，并且是RGBA的png图像)
 def crop_save_logo(new_dir, all_imgs, right_up_corn_logos):
     # bars = trange(len(all_imgs), leave=True)
     for index in range(len(all_imgs)):
@@ -83,14 +86,14 @@ def crop_save_logo(new_dir, all_imgs, right_up_corn_logos):
             # print(filename)
             # cv2.imwrite(filename,buffer)
 
-dir = '/Disk1/Dataset/TV_logo_data/train_01_V2/'
-dir = '/Disk1/Dataset/TV_logo_data/全图版本/'
-new_dir = '/Disk1/Dataset/TV_logo_data/TV_logo_Crop/'
-os.makedirs(new_dir, exist_ok=True)
-all_imgs = glob.glob(dir + '**/*.png')
-print_class(all_imgs)
-all_imgs.sort()
 
-right_up_corn_logos = ['/Disk1/Dataset/TV_logo_data/全图版本/其他6/星空卫视HD.png',
-                       '/Disk1/Dataset/TV_logo_data/全图版本/其他6/星空卫视.png']
-crop_save_logo(new_dir, all_imgs,right_up_corn_logos)
+if __name__ == '__main__':
+    dir = '/Disk1/Dataset/TV_logo_data/全图版本/'
+    new_dir = '/Disk1/Dataset/TV_logo_data/TV_logo_Crop/'
+    os.makedirs(new_dir, exist_ok=True)
+    all_imgs = glob.glob(dir + '**/*.png')
+    print_class(all_imgs)
+    all_imgs.sort()
+    right_up_corn_logos = ['/Disk1/Dataset/TV_logo_data/全图版本/其他6/星空卫视HD.png',
+                           '/Disk1/Dataset/TV_logo_data/全图版本/其他6/星空卫视.png']
+    crop_save_logo(new_dir, all_imgs, right_up_corn_logos)

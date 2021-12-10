@@ -264,10 +264,6 @@ def generate_dataset(dataset_path='/Disk1/Dataset/TV_logo_data/train_01_V3_c57/'
 
 
 if __name__ == '__main__':
-    # for i in range(100):
-    #     random_w = truncated_normal(0.9, 0.12, 0.6, 1)
-    #     random_w=np.random.randint(3, 5)
-    #     print(random_w)
     # generate_dataset(dataset_path='/Disk1/Dataset/TV_logo_data/train_01_V3_c57/',
     #                  img_path='/Disk1/Dataset/OpenImage/train_01/',
     #                  logo_path='/Disk1/Dataset/电视台台标_筛掉后/',
@@ -275,28 +271,3 @@ if __name__ == '__main__':
     generate_dataset(dataset_path='/data/TVLogoDataset/TV_logo_data/train_01_real_V3.5_C57/',
                      img_path='/data/TVLogoDataset/OpenImage/train_01/',
                      png_image='/data/TVLogoDataset/TV_logo_data/TV_logo_Crop/')
-
-# generate_dataset(dataset_path='/Disk1/Dataset/TV_logo_data/train_00_V3/',
-#                  img_path='/Disk1/Dataset/OpenImage/train_00/',
-#                  logo_path='/Disk1/Dataset/电视台台标_筛掉后/',png_image='/Disk1/Dataset/V3_png')
-# a = glob.glob('/Disk1/Dataset/OpenImage/train_00/*')
-# input_img_path=''
-# getAllMask()
-# None
-# generate_class_mapping()
-
-# logo_img_path = '/Disk1/Dataset/电视台台标_筛掉后/CCTV/CCTV1综合.jpg'
-# mask_path = '/Disk1/Dataset/电视台台标_筛掉后/CCTV/CHC高清电影_mask.png'
-# mask_path = '/Disk1/Dataset/电视台台标_筛掉后/CCTV/CCTV1综合_mask.png'
-
-# ---------------- Test fuse_image_multiple_logo -----------------------
-# input_img_path = '/Disk1/Dataset/OpenImage/train_00/ff892cac817c65e8.jpg'
-# logo_img_path = '/Disk1/Dataset/电视台台标_筛掉后/CCTV/CHC高清电影.jpg'
-# mask_img_path = '/Disk1/Dataset/电视台台标_筛掉后/CCTV/CHC高清电影_mask.png'
-# img = cv2.imread(input_img_path, 1)
-# logo=cv2.imread(logo_img_path, 1)
-# logos = [logo,logo,logo,logo]
-# mask=cv2.imread(mask_img_path, 0)
-# masks = [mask,mask,mask,mask]
-# fused_img, bbox = fuse_image_multiple_logo(img, logos, masks)
-# cv2.imwrite('fused_test.jpg',fused_img)
